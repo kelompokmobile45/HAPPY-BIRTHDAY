@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        body {
+            background: black;
+            color: aqua;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; /* Added to center button vertically */
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .auto-typed {
+            font-weight: normal;
+            display: inline-block;
+            animation: changeColor 3s infinite; /* Change color every 3 seconds */
+        }
+
+        @keyframes changeColor {
+            0% { color: yellow; }
+            33.33% { color: lime; }
+            66.66% { color: magenta; }
+            100% { color: yellow; }
+        }
+
+        #nextMessageBtn {
+            background-color: aqua;
+            color: black;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        #page2 {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out; /* Fade-in transition */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="initialHeading"><span class="auto-typed"></span></h1>
+        <button id="nextMessageBtn" onclick="tampilkanPesan()">Tampilkan Pesan Selanjutnya</button>
+        <div id="page2">
+            <h1>SELAMAT ULANG TAHUN</h1>
+            <p>BELUM DI ISI...</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script>
+        var typed = new Typed(".auto-typed", {
+            strings: ["HAPPY BIRTHDAY", "MY FATHER", "PANJANG UMUR", "SEHAT SELALU"],
+            typeSpeed: 150,
+            backSpeed: 150,
+            loop: true
+        });
+
+        var audio = new Audio('D:/coba/assets/music.mp3'); // Use forward slash or escape backslashes
+
+        function tampilkanPesan() {
+            var initialHeading = document.getElementById('initialHeading');
+            initialHeading.style.display = 'none';
+
+            var page2 = document.getElementById('page2');
+            page2.style.display = 'block';
+            setTimeout(function () {
+                page2.style.opacity = '1';
+                audio.play(); // Play the audio
+            }, 10);
+        }
+    </script>
+
+</body>
+</html>
